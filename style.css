@@ -28,6 +28,7 @@ body {
     content: "";
     display: block;
     clear: both;
+    
 }
 
 [class*="col-"] {
@@ -69,6 +70,7 @@ body {
     background-color: #2c71b8;
     color: white;  
 }    
+
  
 ul .submenu {
     position: absolute;
@@ -94,11 +96,16 @@ ul .submenu > li > a {
     color: #fff;   
 }
  #products:hover .submenu {
-    display: block;
+    display: block;  
 }
+
 ul .submenu > li > a:hover {
     background-color: white;
     color: #2c71b8;
+}
+#products:hover .prod {
+    background-color: #2c71b8;
+    color: #fff;
 }
 
 #ext {
