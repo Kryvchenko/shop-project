@@ -103,7 +103,7 @@ ul .submenu > li > a:hover {
     background-color: white;
     color: #2c71b8;
 }
-#products:hover .prod {
+#products:hover .prodp {
     background-color: #2c71b8;
     color: #fff;
 }
