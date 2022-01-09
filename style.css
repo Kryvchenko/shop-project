@@ -424,3 +424,6 @@ input[type="checkbox"]:checked {
     color: #2c71b8;
     border: 1px solid #2c71b8;
 }
+.footer {
+    margin-top: 50px;
+}
