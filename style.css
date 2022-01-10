@@ -314,7 +314,7 @@ span {
     margin-top: 20px;
     margin-left: 30px;
 }
-.btn-card {
+.btn-cart {
     width: 210px;
     height: 50px;
     background-image: url(images/basket-2.png);
@@ -335,7 +335,7 @@ span {
     background-color: #fff;
     color: #2c71b8;
 }
-.btn-card:hover {
+.btn-cart:hover {
     background-color: #fff;
     color: #2c71b8;
     background-image: url(images/basket.png);
