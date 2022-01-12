@@ -19,4 +19,8 @@ for (let i = 0; i < addToCartBtns.length; i++) {
  const heartLikeBtns = document.querySelectorAll(".like.small-btn");
  console.log(heartLikeBtns);
  
- 
+ heartLikeBtns.addEventListener("click", function () {
+  console.log("clicked");
+  document.getElementById("heart").style.backgroundColor = "#2c71b8";
+
+});
