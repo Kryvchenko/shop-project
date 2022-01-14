@@ -21,9 +21,44 @@ likeBtns.forEach((item) => {
   });
 });
 
+//half-page trigger modal(костиль)
+
+window.addEventListener("scroll", () => {
+  const modal = document.querySelector(".modal");
+  const btnClose = document.querySelector(".btn-close");
+  
+  if (document.body.scrollTop > 880 || document.documentElement.scrollTop > 880)  {
+    modal.classList.add("show");
+  } 
+
+  function closeModal() {
+    modal.classList.remove("show");
+  }
+  btnClose.addEventListener("click", closeModal);
+});
+
+//trigger on the bottom 
+/*window.addEventListener("scroll", () => {
+  let scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  console.log(scrollable);
+
+  const scrolled = window.scrollY;
+ 
+  const modal = document.querySelector(".modal");
+  const btnClose = document.querySelector(".btn-close");
+  
+  if (scrolled === scrollable)  {
+    modal.classList.add("show");
+  } 
+
+  function closeModal() {
+    modal.classList.remove("show");
+  }
+  btnClose.addEventListener("click", closeModal);
+});*/
 
 //modal 
-const modal = document.querySelector(".modal");
+/*const modal = document.querySelector(".modal");
 const moreDetailsBtns = document.querySelectorAll(".btn-details");
 const btnClose = document.querySelector(".btn-close");
 
@@ -40,11 +75,28 @@ moreDetailsBtns.forEach((item) => {
   item.addEventListener("click", openModal);
 });
 
-btnClose.addEventListener("click", closeModal);
+btnClose.addEventListener("click", closeModal);*/
 
 
+//scloll modal bottom
+/*window.addEventListener("scroll", () => {
+  let scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  console.log(scrollable);
 
+  const scrolled = window.scrollY;
+ 
+  const modal = document.querySelector(".modal");
+  const btnClose = document.querySelector(".btn-close");
+  
+  if (scrolled === scrollable)  {
+    modal.classList.add("show");
+  } 
 
+  function closeModal() {
+    modal.classList.remove("show");
+  }
+  btnClose.addEventListener("click", closeModal);
+});*/
 
 
 
