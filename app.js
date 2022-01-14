@@ -21,15 +21,23 @@ likeBtns.forEach((item) => {
   });
 });
 
+$(".slider").slick({
+  dots: true,
+  autoplay: false,
+  autoplaySpeed: 1000,
+});
+
 //half-page trigger modal(костиль)
 
 window.addEventListener("scroll", () => {
   const modal = document.querySelector(".modal");
   const btnClose = document.querySelector(".btn-close");
   
-  if (document.body.scrollTop > 880 || document.documentElement.scrollTop > 880)  {
+  if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900)  {
     modal.classList.add("show");
-  } 
+  } else {
+    modal.classList.remove("show");
+  }
 
   function closeModal() {
     modal.classList.remove("show");
@@ -58,7 +66,7 @@ window.addEventListener("scroll", () => {
 });*/
 
 //modal 
-/*const modal = document.querySelector(".modal");
+const modal = document.querySelector(".modal");
 const moreDetailsBtns = document.querySelectorAll(".btn-details");
 const btnClose = document.querySelector(".btn-close");
 
@@ -75,7 +83,7 @@ moreDetailsBtns.forEach((item) => {
   item.addEventListener("click", openModal);
 });
 
-btnClose.addEventListener("click", closeModal);*/
+btnClose.addEventListener("click", closeModal);
 
 
 //scloll modal bottom
