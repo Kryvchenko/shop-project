@@ -23,47 +23,9 @@ likeBtns.forEach((item) => {
 
 $(".slider").slick({
   dots: true,
-  autoplay: false,
-  autoplaySpeed: 1000,
+  autoplay: true,
+  autoplaySpeed: 3000,
 });
-
-//half-page trigger modal(костиль)
-
-window.addEventListener("scroll", () => {
-  const modal = document.querySelector(".modal");
-  const btnClose = document.querySelector(".btn-close");
-  
-  if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900)  {
-    modal.classList.add("show");
-  } else {
-    modal.classList.remove("show");
-  }
-
-  function closeModal() {
-    modal.classList.remove("show");
-  }
-  btnClose.addEventListener("click", closeModal);
-});
-
-//trigger on the bottom 
-/*window.addEventListener("scroll", () => {
-  let scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  console.log(scrollable);
-
-  const scrolled = window.scrollY;
- 
-  const modal = document.querySelector(".modal");
-  const btnClose = document.querySelector(".btn-close");
-  
-  if (scrolled === scrollable)  {
-    modal.classList.add("show");
-  } 
-
-  function closeModal() {
-    modal.classList.remove("show");
-  }
-  btnClose.addEventListener("click", closeModal);
-});*/
 
 //modal 
 const modal = document.querySelector(".modal");
@@ -84,6 +46,49 @@ moreDetailsBtns.forEach((item) => {
 });
 
 btnClose.addEventListener("click", closeModal);
+
+
+//half-page trigger modal(костиль)
+let unBlock = true;
+window.addEventListener("scroll", () => {
+  const modal = document.querySelector(".modal");
+  const btnClose = document.querySelector(".btn-close");
+  
+  if (document.documentElement.scrollTop > 900 && unBlock == true) {
+    modal.classList.add("show");
+    unBlock = false;
+  } else {
+    modal.classList.remove("hide");
+  }
+
+  function closeModal() {
+    modal.classList.remove("show");
+  }
+  btnClose.addEventListener("click", closeModal);
+});
+
+//trigger on the bottom 
+
+/*window.addEventListener("scroll", () => {
+  let scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  console.log(scrollable);
+
+  const scrolled = window.scrollY;
+ 
+  const modal = document.querySelector(".modal");
+  const btnClose = document.querySelector(".btn-close");
+  
+  if (scrolled === scrollable)  {
+    modal.classList.add("show");
+  } 
+
+  function closeModal() {
+    modal.classList.remove("show");
+  }
+  btnClose.addEventListener("click", closeModal);
+});*/
+
+
 
 
 //scloll modal bottom

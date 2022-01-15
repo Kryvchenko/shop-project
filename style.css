@@ -454,7 +454,7 @@ input[type="checkbox"]:checked {
     font-size: 10px;  
 }
 .slick-prev:before {
-   background-image: url(/images/arrow-left.png);
+   background-image: url(images/arrow-left.png);
    background-repeat: no-repeat;
    background-position: center;
    background-size: contain;
@@ -464,7 +464,7 @@ input[type="checkbox"]:checked {
    margin-left: 10px;
 }
 .slick-next:before {
-    background-image: url(/images/arrow-right.png);
+    background-image: url(images/arrow-right.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
