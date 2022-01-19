@@ -1,9 +1,9 @@
 
 const productsCountEl = document.getElementById("products-count");
-console.log(productsCountEl);
+
 
 const addToCartBtns = document.querySelectorAll(".btn-cart");
-console.log(addToCartBtns);
+
 
 
 for (let i = 0; i < addToCartBtns.length; i++) {
@@ -47,9 +47,47 @@ moreDetailsBtns.forEach((item) => {
 
 btnClose.addEventListener("click", closeModal);
 
+function showModalByScroll() {
+  if (window.pageYOffset >= document.body.scrollHeight / 2 ) {
+    openModal ();
+    window.removeEventListener("scroll" , showModalByScroll);
+  }
+}
+window.addEventListener("scroll" , showModalByScroll);
+
+// AOS
+//AOS.init();
+
+//product quantity
+
+let decrementBtns = document.querySelectorAll(".decrement-button")[0];
+let incrementBtns = document.querySelectorAll(".increment-button")[0];
+let quantityInput = document.querySelectorAll(".product-quantity input")[0];
+
+
+incrementBtns.addEventListener("click", function () {
+  let currentValue = +quantityInput.value;
+  let nextValue = currentValue + 1;
+  quantityInput.value = nextValue;
+  console.log("clicked");
+  if (nextValue > 9) {
+    incrementBtns.disabled = true;
+  } 
+});
+
+decrementBtns.addEventListener("click", function () {
+  let currentValue = +quantityInput.value;
+  let nextValue = currentValue - 1;
+  quantityInput.value = nextValue;
+
+  if (nextValue < 1) {
+    decrementBtns.disabled = true;
+  };
+});
+
 
 //half-page trigger modal(костиль)
-let unBlock = true;
+/*let unBlock = true;
 window.addEventListener("scroll", () => {
   const modal = document.querySelector(".modal");
   const btnClose = document.querySelector(".btn-close");
@@ -65,33 +103,10 @@ window.addEventListener("scroll", () => {
     modal.classList.remove("show");
   }
   btnClose.addEventListener("click", closeModal);
-});
+});*/
 
 //trigger on the bottom 
 
-/*window.addEventListener("scroll", () => {
-  let scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  console.log(scrollable);
-
-  const scrolled = window.scrollY;
- 
-  const modal = document.querySelector(".modal");
-  const btnClose = document.querySelector(".btn-close");
-  
-  if (scrolled === scrollable)  {
-    modal.classList.add("show");
-  } 
-
-  function closeModal() {
-    modal.classList.remove("show");
-  }
-  btnClose.addEventListener("click", closeModal);
-});*/
-
-
-
-
-//scloll modal bottom
 /*window.addEventListener("scroll", () => {
   let scrollable = document.documentElement.scrollHeight - window.innerHeight;
   console.log(scrollable);
