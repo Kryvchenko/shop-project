@@ -1,19 +1,19 @@
+// product count 
 
 const productsCountEl = document.getElementById("products-count");
-
-
 const addToCartBtns = document.querySelectorAll(".btn-cart");
 
-
-
 for (let i = 0; i < addToCartBtns.length; i++) {
-    addToCartBtns[i].addEventListener("click", function () {
-      productsCountEl.textContent = +productsCountEl.textContent + 1;
-    });
-  };
+  addToCartBtns[i].addEventListener("click", function () {
+    productsCountEl.textContent =
+      +productsCountEl.textContent + +quantityInput[i].value;
+    quantityInput[i].value = 1;
+  });
+}
 
 
 // change like state
+
 const likeBtns = document.querySelectorAll(".like");
 likeBtns.forEach((item) => {
   item.addEventListener("click", function () {
@@ -28,6 +28,7 @@ $(".slider").slick({
 });
 
 //modal 
+
 const modal = document.querySelector(".modal");
 const moreDetailsBtns = document.querySelectorAll(".btn-details");
 const btnClose = document.querySelector(".btn-close");
@@ -58,35 +59,101 @@ window.addEventListener("scroll" , showModalByScroll);
 // AOS
 //AOS.init();
 
+//product quantity - another way
+
+let decrementBtns = document.querySelectorAll(".decrement-button");
+let incrementBtns = document.querySelectorAll(".increment-button");
+let quantityInput = document.querySelectorAll(".product-quantity input");
+
+function Counter(
+  incrementBtn, 
+  decrementBtn, 
+  inputField, 
+  minCount = 1, 
+  maxCount = 5
+  ) {
+   this.domRefs = {
+     incrementBtn,
+     decrementBtn,
+     inputField,
+    };
+
+    this.toggleButtonState = function () {
+      let count = this.domRefs.inputField.value;
+      this.domRefs.decrementBtn.disabled = count <= minCount;
+      this.domRefs.incrementBtn.disabled = count >= maxCount;
+    }; 
+  
+   
+    this.toggleButtonState();
+
+    this.increment = function () {
+    this.domRefs.inputField.value = +this.domRefs.inputField.value + 1;
+    this.toggleButtonState();
+    };
+    this.decrement = function () {
+    this.domRefs.inputField.value = +this.domRefs.inputField.value - 1;
+    this.toggleButtonState();
+    };
+     
+    this.domRefs.incrementBtn.addEventListener(
+    "click",
+    this.increment.bind(this)
+    );
+    this.domRefs.decrementBtn.addEventListener(
+    "click",
+    this.decrement.bind(this)
+   );
+  }
+  let counter1;
+  for (let i = 0; i < quantityInput.length; i++) {
+    let counter1 = new Counter(
+     incrementBtns[i],
+     decrementBtns[i],
+     quantityInput[i]
+   );
+  }
+  console.log(counter1);
+
 //product quantity
+/*
+let decrementBtns = document.querySelectorAll(".decrement-button");
+let incrementBtns = document.querySelectorAll(".increment-button");
+let quantityInput = document.querySelectorAll(".product-quantity input");
+let minCount = 1;
+let maxCount = 5;
 
-let decrementBtns = document.querySelectorAll(".decrement-button")[0];
-let incrementBtns = document.querySelectorAll(".increment-button")[0];
-let quantityInput = document.querySelectorAll(".product-quantity input")[0];
+for (let i = 0; i < quantityInput.length; i++) {
+  let currentValue = +quantityInput[i].value;
+  toggleButtonState(currentValue, incrementBtns[i], decrementBtns[i]);
+}
 
+function toggleButtonState(count, incrementBtn, decrementBtn) {
+  decrementBtn.disabled = count <= minCount;
+  incrementBtn.disabled = count >= maxCount;
+}
+for (let i = 0; i < incrementBtns.length; i++) {
+  incrementBtns[i].addEventListener("click", function () {
+    let currentValue = +quantityInput[i].value;
+    let nextValue = currentValue + 1;
+    quantityInput[i].value = nextValue;
 
-incrementBtns.addEventListener("click", function () {
-  let currentValue = +quantityInput.value;
-  let nextValue = currentValue + 1;
-  quantityInput.value = nextValue;
-  console.log("clicked");
-  if (nextValue > 9) {
-    incrementBtns.disabled = true;
-  } 
-});
+    toggleButtonState(nextValue, incrementBtns[i], decrementBtns[i]);
+  });
+}
+for (let i = 0; i < decrementBtns.length; i++) {
+  decrementBtns[i].addEventListener("click", function () {
+    let currentValue = +quantityInput[i].value;
+    let nextValue = currentValue - 1;
+    quantityInput[i].value = nextValue;
 
-decrementBtns.addEventListener("click", function () {
-  let currentValue = +quantityInput.value;
-  let nextValue = currentValue - 1;
-  quantityInput.value = nextValue;
-
-  if (nextValue < 1) {
-    decrementBtns.disabled = true;
-  };
-});
-
+    toggleButtonState(nextValue, incrementBtns[i], decrementBtns[i]);
+  });
+}
+*/
 
 //half-page trigger modal(костиль)
+
 /*let unBlock = true;
 window.addEventListener("scroll", () => {
   const modal = document.querySelector(".modal");
